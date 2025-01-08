@@ -3,11 +3,14 @@ package com.example.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -31,8 +34,8 @@ public class Customer {
 //    mappedBy = "customer": Specifies that the customer field in the Account entity owns the relationship.
 //    cascade = CascadeType.ALL: Automatically propagates operations (e.g., persist, delete) from Customer to its associated accounts.
 //    orphanRemoval = true: Ensures orphaned accounts (no longer associated with a customer) are deleted.
-//
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Account> accounts;
+
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Account> accounts;
 
 }
