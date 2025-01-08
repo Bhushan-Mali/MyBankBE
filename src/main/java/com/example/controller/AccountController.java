@@ -63,8 +63,8 @@ public class AccountController {
 	}
     
     @PutMapping("/{accountId}")
-    public ResponseEntity<?> updateAccount(@PathVariable Long accountId, @RequestBody Account account) {
-        Account account1 = accountService.updateAccount(accountId, account);  
+    public ResponseEntity<?> updateAccount(@PathVariable Long accountId, @RequestBody AccountDTO accountDto) {
+        Account account1 = accountService.updateAccount(accountId, accountDto);  
         CommonResponse response = new CommonResponse();
         if(account1 != null) {
         	response.setMessage("Account updated successully");
