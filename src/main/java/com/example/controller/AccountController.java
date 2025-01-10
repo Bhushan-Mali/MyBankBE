@@ -37,7 +37,7 @@ public class AccountController {
         CommonResponse response = new CommonResponse();
         if (account != null) {	        
 	        response.setMessage("Account successfully created");
-	        response.setAccountId(account.getId());
+	        //response.setAccountId(account.getId());
 	        return new ResponseEntity<>(response, HttpStatus.CREATED);
 		} else {
 			response.setMessage("Something went wrong");
@@ -49,7 +49,12 @@ public class AccountController {
     @GetMapping("")
     public List<Account> getAccounts() {
     	return accountService.getAllAccounts();
-    }    
+    }
+    
+//    @GetMapping("")
+//    public List<AccountDTO> getAccountss() {
+//    	return accountService.getAllAccountDtos();
+//    }
     
     @GetMapping("/{accountId}")
 	public ResponseEntity<?> getAccountById(@PathVariable Long accountId) {

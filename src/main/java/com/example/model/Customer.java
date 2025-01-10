@@ -2,12 +2,13 @@ package com.example.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Getter
 @Setter
@@ -35,7 +36,12 @@ public class Customer {
 //    cascade = CascadeType.ALL: Automatically propagates operations (e.g., persist, delete) from Customer to its associated accounts.
 //    orphanRemoval = true: Ensures orphaned accounts (no longer associated with a customer) are deleted.
 
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Account> accounts;
+//  Use @JsonManagedReference and @JsonBackReference
+//  Jackson annotations like @JsonManagedReference and @JsonBackReference handle parent-child relationships by ignoring the back reference during serialization.
+//	This avoids circular references by serializing only the Customer → Account direction, not the reverse.
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Account> accounts;
 
 }

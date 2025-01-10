@@ -19,7 +19,7 @@ public class AccountDTO {
 //    nullable = false: Ensures an account must always be linked to a customer.
 //
     
-    @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id", nullable = false)
+//    private Customer customer;
 }

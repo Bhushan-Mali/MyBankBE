@@ -19,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -57,15 +58,35 @@ public class AccountServiceImpl implements AccountService {
         }
         return null;
     }
-
-	@Override
+	
+    @Override
 	public List<Account> getAllAccounts() {
-		List<Account> accountList = accountRepository.findAll();
+    	List<Account> accountList = accountRepository.findAll();
 		if(accountList != null && !accountList.isEmpty()) {
 			return accountList;
 		}
 		return null;
-	}	
+	}
+    
+    
+	@Override
+	public List<AccountDTO> getAllAccountDtos() {
+		List<Account> accountList = accountRepository.findAll();
+		List<AccountDTO>  accountDto = accountList.stream().map(this::convertAccountToAccountDto).collect(Collectors.toList());
+		return accountDto;
+	}
+	
+	
+	//converts Account entity to AccountDTO
+	public AccountDTO convertAccountToAccountDto(Account account) {
+		AccountDTO accountdto = new AccountDTO();
+		accountdto.setAccountNumber(account.getAccountNumber());
+		accountdto.setAccountType(account.getAccountType());
+		accountdto.setBalance(account.getBalance());
+		accountdto.setCreatedDate(account.getCreatedDate());
+		accountdto.setStatus(account.getStatus());
+		return accountdto;
+	}
 	
 	@Override
 	public Account getAccountById(Long accountId) {
@@ -90,6 +111,8 @@ public class AccountServiceImpl implements AccountService {
         String randomNumner = String.valueOf(random.nextInt(1000, 9999));   //return String.valueOf(random.nextInt(1000, 9999));
         return randomNumner;
     }
+
+	
 
 	
 

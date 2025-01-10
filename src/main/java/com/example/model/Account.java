@@ -1,6 +1,8 @@
 package com.example.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +29,13 @@ public class Account {
 //    @JoinColumn(name = "customer_id"): Specifies the foreign key column (customer_id) in the Account table.
 //    nullable = false: Ensures an account must always be linked to a customer.
 
-    @ManyToOne
+//    Use @JsonManagedReference and @JsonBackReference
+//    Jackson annotations like @JsonManagedReference and @JsonBackReference handle parent-child relationships by ignoring the back reference during serialization.
+//	  This avoids circular references by serializing only the Customer → Account direction, not the reverse.
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
+    @JsonBackReference
     private Customer customer;
     
 //    @Transient
