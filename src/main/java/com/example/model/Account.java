@@ -22,6 +22,9 @@ public class Account {
     private String accountType;
     private String accountNumber;
     private Double balance;
+    
+    @Transient
+    private final Double MinBalance = 500.0;
     private String status;
     private String createdDate;
 //
