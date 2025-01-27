@@ -15,6 +15,6 @@ public class SwaggerConfig {
 		return new OpenAPI().info(new Info()
 				.title("MyBank API")
 				.version("1.0")
-				.description("This is API documentation for MyBank application."));
+				.description("API documentation for MyBank application."));
 	}
 }

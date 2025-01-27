@@ -6,6 +6,8 @@ import com.example.response.CommonResponse;
 import com.example.service.AccountService;
 import com.example.serviceImpl.AccountServiceImpl;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/account")
+@Tag(name="Account Management", description = "Operations related to bank accounts")
 public class AccountController {
 
     @Autowired

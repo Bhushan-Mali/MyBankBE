@@ -9,9 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.dto.EmailDTO;
 import com.example.service.EmailService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 
 @RestController
+@Tag(name="Email", description = "Email Service")
 public class EmailController {
 
 	

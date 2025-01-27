@@ -5,6 +5,8 @@ import com.example.model.Customer;
 import com.example.response.CommonResponse;
 import com.example.service.CustomerService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/customer")
+@Tag(name="Customer Management", description = "Operations related to customer")
 public class CustomerController {
 
     @Autowired

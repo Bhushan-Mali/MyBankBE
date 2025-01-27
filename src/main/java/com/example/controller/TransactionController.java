@@ -14,8 +14,11 @@ import com.example.response.CommonResponse;
 import com.example.response.TransactionsResponse;
 import com.example.service.TransactionService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/transaction")
+@Tag(name="Transaction Management", description = "Operations related to transaction")
 public class TransactionController {
 	
 	@Autowired
